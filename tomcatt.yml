@@ -3,6 +3,7 @@
   vars:
   - warName: webapp.war
   - warRemotePath: /opt/tomcat/webapp
+  - warLocalPath: /var/lib/jenkins/workspace/maven_nexus/webapp/target
 
   tasks:
   - name: Download WAR to server
