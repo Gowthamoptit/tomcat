@@ -1,25 +1,17 @@
 ---
-- hosts: localhost
-  vars:
-  - warName: webapp.war
-  - warRemotePath: /opt/tomcat/webapps
-  - warLocalPath: /var/lib/jenkins/workspace/maven_nexus/webapp/target
+ - name: Deploy war  
+   hosts: localhost  
+   tasks:
+     - name: Stop Tomcat  
+       command: /opt/tomcat/bin/shutdown.sh
 
-  tasks:
-  - name: Download WAR to server
-    synchronize: src={{ warLocalPath }}/{{ warName }} dest={{ warRemotePath }}/{{ warName }}
+     - name: Delete old war  
+       command: rm -rf /home/tomcat/webapps/webapp*
 
-  - name: Unzip WAR file
-    unarchive: src={{ warRemotePath }}/{{ warName }} dest=/var/lib/jenkins/workspace/maven_nexus/webapp/target copy=no mode=0755 owner=tomcat group=tomcat
-    notify:
-        - Restart tomcat
+     - name: Copy the war file  
+       copy:  
+         src: /var/lib/jenkins/workspace  
+         dest: /opt/tomcat/webapps/  
 
-  - name: Delete remote war file
-    file: path={{ warRemotePath }}/{{ warName }} state=absent
-  
-  - name: wait for tomcat to start
-    wait_for: port=8080 timeout=60
-
-  handlers:
-    - name: Restart tomcat
-      service: name=tomcat state=restarted
+     - name: Start Tomcat  
+       command: /opt/tomcat/bin/startup.sh  
