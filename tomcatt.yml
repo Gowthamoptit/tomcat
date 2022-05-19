@@ -1,5 +1,5 @@
 ---
-- hosts: tomcatServer
+- hosts: localhost
   vars:
   - warName: webapp.war
   - warRemotePath: /home/tomcat/webapps
