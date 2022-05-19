@@ -9,7 +9,7 @@
     synchronize: src={{ warLocalPath }}/{{ warName }} dest={{ warRemotePath }}/{{ warName }}
 
   - name: Unzip WAR file
-    unarchive: src={{ warRemotePath }}/{{ warName }} dest=/var/lib/jenkins/webapps/webapp/ copy=no mode=0755 owner=tomcat group=tomcat
+    unarchive: src={{ warRemotePath }}/{{ warName }} dest=/var/lib/jenkins/workspace/maven_nexus/webapp/target copy=no mode=0755 owner=tomcat group=tomcat
     notify:
         - Restart tomcat
 
@@ -18,4 +18,4 @@
 
   handlers:
     - name: Restart tomcat
-      service: name=tomcat7 state=restarted
+      service: name=tomcat state=restarted
