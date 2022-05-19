@@ -10,7 +10,7 @@
 
      - name: Copy the war file  
        copy:  
-         src: /var/lib/jenkins/workspace  
+         src: /var/lib/jenkins/workspace/ 
          dest: /opt/tomcat/webapps/  
 
      - name: Start Tomcat  
