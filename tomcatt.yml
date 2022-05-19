@@ -2,16 +2,11 @@
  - name: Deploy war  
    hosts: localhost  
    tasks:
-     - name: Stop Tomcat  
-       command: /opt/tomcat/bin/shutdown.sh
-
-     - name: Delete old war  
-       command: rm -rf /home/tomcat/webapps/webapp*
-
-     - name: Copy the war file  
-       copy:  
-         src: /var/lib/jenkins/workspace/ 
-         dest: /opt/tomcat/webapps/  
-
-     - name: Start Tomcat  
-       command: /opt/tomcat/bin/startup.sh  
+     - name: start Tomcat
+       command: "nohup /opt/tomcat/bin/catalina.sh start"
+       
+     - name: deploying war files from nexus directory
+       get_url:
+         url: 
+         dest:  /opt/tomcat/webapps
+ ...
