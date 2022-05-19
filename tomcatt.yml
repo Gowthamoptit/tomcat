@@ -2,7 +2,7 @@
 - hosts: localhost
   vars:
   - warName: webapp.war
-  - warRemotePath: /opt/tomcat/webapp
+  - warRemotePath: /opt/tomcat/webapps
   - warLocalPath: /var/lib/jenkins/workspace/maven_nexus/webapp/target
 
   tasks:
