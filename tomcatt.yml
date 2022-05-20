@@ -4,7 +4,7 @@
    tasks:
     - name: deploying war file from nexus repository
       get_url:
-        url: "http://54.214.119.9:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
+        url: "http://34.220.127.22:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
         dest: /opt/tomcat/webapps
 ...
 
