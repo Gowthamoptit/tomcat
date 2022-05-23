@@ -1,11 +1,11 @@
 ---
- - hosts: localhost
+ - hosts: webservers
    become: true
    gather_facts: true
    tasks:
     - name: deploying war file from nexus repository
       get_url:
-        url: "http://54.244.40.57:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
+        url: "http://54.187.127.108:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
         dest: /opt/tomcat/webapps
 ...
 
