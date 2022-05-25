@@ -1,11 +1,16 @@
 ---
- - hosts: webservers
-   become: true
-   gather_facts: true
-   tasks:
-    - name: deploying war file from nexus repository
-      get_url:
-        url: "http://54.187.127.108:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
-        dest: /opt/tomcat/webapps
+- hosts: webservers
+  gather_facts: true
+  become: true
+  tasks:
+   - name: deploying war file from nexus repository
+     get_url:
+       url: "http://52.24.56.61:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-20220514.121817-1.war"
+       dest: /opt/tomcat/webapps/
+       mode: 0777
+       owner: root
+       group: root
+
 ...
+
 
