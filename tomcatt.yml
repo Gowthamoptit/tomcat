@@ -5,7 +5,7 @@
   tasks:
    - name: deploying war file from nexus repository
      get_url:
-       url: "http://{{ nexus_ip }}/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/{{ artifact }}"
+       url: "http://{{ nexus_ip }}:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/{{ artifact }}"
        dest: /opt/tomcat/webapps/
        mode: 0777
        owner: root
