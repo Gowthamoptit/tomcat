@@ -1,5 +1,5 @@
 [webservers]
-3.139.64.184
+54.187.159.142
 
 [all:vars]
 ansible_ssh_user=deployer
