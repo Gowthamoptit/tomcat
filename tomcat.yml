@@ -7,7 +7,7 @@
      get_url:
        url: "http://{{ nexus_ip }}:8081/repository/maven-snapshots/com/example/maven-project/webapp/1.0-SNAPSHOT/{{ artifact }}"
        dest: /opt/tomcat/webapps/
-       mode: 0555
+       mode: 0744
        owner: root
        group: root
 
