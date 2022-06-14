@@ -1,0 +1,16 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('SCM checkout') {
+            steps {
+              git branch: 'main', url: 'https://github.com/Gowthamoptit/tomcat.git'
+            }
+        }
+        stage('Get the artifacts from Nexus to tomcat') {
+            steps {
+              sh """ansible-playbook --extra-vars '{"nexus_ip":"${nexus_ip}"}' --extra-vars '{"artifact":"${artifact}"}' -i dev.inv tomcat.yml """
+            }
+        }
+    }
+}
